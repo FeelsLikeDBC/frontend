@@ -10,17 +10,17 @@ var lineChart = (function(){
         left: 50
       },
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(fkData, function (d) {
-          return d.time;
+          return d.date;
         }),
         d3.max(fkData, function (d) {
-          return d.time;
+          return d.date;
         })
       ]),
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(fkData, function (d) {
-        return d.cloudCover;
+        return 0;
       }),
       d3.max(fkData, function (d) {
-        return d.cloudCover;
+        return d.high_apparent_temp;
       })
     ]),
     xAxis = d3.svg.axis()
@@ -43,10 +43,10 @@ var lineChart = (function(){
       .call(yAxis);
     var cloudCovLine = d3.svg.line()
     .x(function (d) {
-      return xRange(d.time);
+      return xRange(d.date);
     })
     .y(function (d) {
-      return yRange(d.cloudCover);
+      return yRange(d.high_apparent_temp);
     })
     .interpolate('linear');
     vis.append("svg:path")
@@ -57,10 +57,10 @@ var lineChart = (function(){
 
     var humidityLine = d3.svg.line()
     .x(function (d) {
-      return xRange(d.time);
+      return xRange(d.date);
     })
     .y(function (d) {
-      return yRange(d.humidity);
+      return yRange(d.high_apparent_temp);
     })
     .interpolate('linear');
     vis.append("svg:path")
@@ -99,7 +99,12 @@ $(document).ready(function() {
   $('body').on('click','#compare',function(event){
     event.preventDefault();
     $.get("/things").done(function(data){
-      var  ,ki8AAQ       = JSON.parse(data).hourly.data;
+      var fk_resp = JSON.parse(data).weather["2011"];
+      for (var i = 0; i < fk_resp.length; i++){
+        console.log(fk_resp[i].date)
+        console.log(fk_resp[i].high_apparent_temp)
+      }
+
       $('<svg id="visualisation" width="'+parseInt(d3.select('#things').style('width'),10)+'" height="500"></svg>').appendTo('#things');
       size.resize('#visualisation');
       lineChart.initChart(fk_resp);
