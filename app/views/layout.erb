@@ -15,11 +15,28 @@
   <!-- Our Stuff -->
   <link rel="stylesheet" href="/css/application.css">
   <script src="/js/application.js" type="text/javascript"></script>
+  <script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiZTQ3bXk1NHVjMyIsImEiOiI4ZGNlZjMxNTFmNmY0MjUyMGVjODEyYzUxZTVhNGE2ZSJ9.rkiDwax-Um8wB2er6nNAQg';
+</script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v1.3.0/turf.min.js'></script>
   <title>FeelsLike</title>
+  <style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
 </head>
 <body>
   <div class='container'>
     <%= yield %>
   </div>
+  <div id='map'></div>
+  <script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoiZTQ3bXk1NHVjMyIsImEiOiI4ZGNlZjMxNTFmNmY0MjUyMGVjODEyYzUxZTVhNGE2ZSJ9.rkiDwax-Um8wB2er6nNAQg';
+    var map = L.mapbox.map('map', 'mapbox.light')
+    .setView([38.05, -84.5], 12);
+    map.scrollWheelZoom.disable();
+</script>
 </body>
 </html>

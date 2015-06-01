@@ -15,6 +15,7 @@ gem 'rake'
 gem 'unirest'
 gem 'shotgun'
 gem 'hirb'
+gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
 
 group :test do
   gem 'shoulda-matchers'
