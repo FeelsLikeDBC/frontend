@@ -20,7 +20,7 @@ var lineChart = (function(){
         return 0;
       }),
       d3.max(fkData, function (d) {
-        return d.high_apparent_temp;
+        return 120;
       })
     ]),
     xAxis = d3.svg.axis()
@@ -98,7 +98,7 @@ var lineChart = (function(){
         return 0;
       }),
       d3.max(fkData, function (d) {
-        return d.high_apparent_temp;
+        return 120;
       })
     ]),
     xAxis = d3.svg.axis()
@@ -186,7 +186,7 @@ $(document).ready(function() {
       lineChart.initChart(fk_resp);
     });
 
-    $.get("/rich").done(function(data){
+    $.get("/chi").done(function(data){
       var fk_resp = JSON.parse(data).weather["2012"];
       lineChart.initChart2(fk_resp);
     });
