@@ -100,13 +100,15 @@ $(document).ready(function() {
     event.preventDefault();
     $.get("/things").done(function(data){
       var fk_resp = JSON.parse(data).weather["2011"];
-      for (var i = 0; i < fk_resp.length; i++){
-        console.log(fk_resp[i].date)
-        console.log(fk_resp[i].high_apparent_temp)
-      }
+
 
       $('<svg id="visualisation" width="'+parseInt(d3.select('#things').style('width'),10)+'" height="500"></svg>').appendTo('#things');
       size.resize('#visualisation');
+      lineChart.initChart(fk_resp);
+    });
+
+    $.get("/things").done(function(data){
+      var fk_resp = JSON.parse(data).weather["2012"];
       lineChart.initChart(fk_resp);
     });
   })
