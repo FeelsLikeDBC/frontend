@@ -39,7 +39,9 @@ get '/month' do
   puts "params[:month]"
   @month = translation[params[:month]]
 
-  @kc_month_temp = kc_hash[params[:month]]
+
+  puts "@kc_month_temp"
+  p @kc_month_temp = kc_hash[params[:month]]
   array = []
 
   sf_hash.each do |key, value|
@@ -76,9 +78,11 @@ get '/month' do
   smallest_sf_number = sf_hash.values.each.min
 
   if @kc_month_temp > biggest_sf_number
-    @message = "Kansas City is hotter than the hottest day in San Francisco!!!"
+    difference = (@kc_month_temp - biggest_sf_number).to_s
+    @message = "BUT Kansas City is #{difference}° hotter than the hottest day in San Francisco!!!"
   elsif @kc_month_temp < smallest_sf_number
-    @message = "Kansas City is colder than the coldest day in San Francisco!!!"
+    difference = (smallest_sf_number - @kc_month_temp).to_s
+    @message = "BUT Kansas City is #{difference}° colder than the coldest day in San Francisco!!!"
   end
 
 
