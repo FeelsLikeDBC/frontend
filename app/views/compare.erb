@@ -1,0 +1,29 @@
+
+
+  <h1>From SF and comparing it to KC</h1>
+
+
+<form action="/month">
+<select name="month" selected="dec">
+  <option value="jan">January</option>
+  <option value="feb">February</option>
+  <option value="mar">March</option>
+  <option value="apr">April</option>
+  <option value="may">May</option>
+  <option value="jun">June</option>
+  <option value="jul">July</option>
+  <option value="aug">August</option>
+  <option value="sept">September</option>
+  <option value="oct">October</option>
+  <option value="nov">November</option>
+  <option value="dec">December</option>
+</select> in Kansas City feels like ?????? in San Francisco.
+<br><br>
+<input type="submit">
+</form>
+
+<% if @array_of_closest_matching_months %>
+  <% @array_of_closest_matching_months.each do |month| %>
+    <p><%= month %></p>
+  <% end %>
+<% end %>
