@@ -63,14 +63,24 @@ get '/month' do
   puts "@array_of_closest_matching_temps"
   p @array_of_closest_matching_temps
 
-
   @array_of_closest_matching_months = []
 
   array_of_indexes.each do |index|
     @array_of_closest_matching_months << months[index]
   end
 
-   p @array_of_closest_matching_months
+  puts "@array_of_closest_matching_months"
+  p @array_of_closest_matching_months
+
+  biggest_sf_number = sf_hash.values.each.max
+  smallest_sf_number = sf_hash.values.each.min
+
+  if @kc_month_temp > biggest_sf_number
+    @message = "Kansas City is hotter than the hottest day in San Francisco!!!"
+  elsif @kc_month_temp < smallest_sf_number
+    @message = "Kansas City is colder than the coldest day in San Francisco!!!"
+  end
+
 
   erb :compare
 
