@@ -2,9 +2,9 @@
 
   <h1>From SF and comparing it to KC</h1>
 
-
+Select a month to compare the weather of Kansas City to San Francisco:
 <form action="/month">
-<select name="month" selected="dec">
+<select name="month">
   <option value="jan">January</option>
   <option value="feb">February</option>
   <option value="mar">March</option>
@@ -17,13 +17,30 @@
   <option value="oct">October</option>
   <option value="nov">November</option>
   <option value="dec">December</option>
-</select> in Kansas City feels like ?????? in San Francisco.
+</select>
 <br><br>
 <input type="submit">
 </form>
 
+<br><br>
 <% if @array_of_closest_matching_months %>
+  <p><%= @month %> in Kansas city is like
   <% @array_of_closest_matching_months.each do |month| %>
-    <p><%= month %></p>
+    <%= month %>
   <% end %>
+  in San Francisco.</p>
+
+  <h3>Average Temperatures:</h3>
+  Kansas city, <%= @month %>: <%= @kc_month_temp %>°<br>
+  <% @array_of_closest_matching_months.each do |month| %>
+    San Francisco, <%= month %><br>
+  <% end %>
+
+
+
+
+
 <% end %>
+
+
+

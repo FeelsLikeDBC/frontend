@@ -19,16 +19,31 @@ end
 get '/month' do
   kc_hash = Hash["jan", 36, "feb", 43, "mar", 54, "apr", 65, "may", 75, "jun", 84, "jul", 89, "aug", 87, "sep", 79, "oct", 68, "nov", 52, "dec", 40]
   sf_hash = Hash["jan", 35, "feb", 37, "mar", 62, "apr", 63, "may", 35, "jun", 66, "jul", 67, "aug", 20, "sep", 70, "oct", 69, "nov", 63, "dec", 57]
+
+  translation = Hash["jan", "January",
+                     "feb", "February",
+                     "mar", "March",
+                     "apr", "April",
+                     "may", "May",
+                     "jun", "June",
+                     "jul", "July",
+                     "aug", "August",
+                     "sep", "September",
+                     "oct", "October",
+                     "nov", "November",
+                     "dec", "December"]
+
   months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-  puts "params[:month]"
-  @month = params[:month]
 
-  kc_month_temp = kc_hash[params[:month]]
+  puts "params[:month]"
+  @month = translation[params[:month]]
+
+  @kc_month_temp = kc_hash[params[:month]]
   array = []
 
   sf_hash.each do |key, value|
-    array << (value - kc_month_temp).abs
+    array << (value - @kc_month_temp).abs
   end
 
   puts "The array:"
