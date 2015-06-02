@@ -32,12 +32,12 @@ Select a month to compare the weather of Kansas City to San Francisco:
 
   <h3>Average Temperatures:</h3>
   Kansas city, <%= @month %>: <%= @kc_month_temp %>°<br>
+
+  <% counter = 0 %>
   <% @array_of_closest_matching_months.each do |month| %>
-    San Francisco, <%= month %><br>
+    San Francisco, <%= month %>: <%= @array_of_closest_matching_temps[counter] %>° <br>
+    <% counter += 1 %>
   <% end %>
-
-
-
 
 
 <% end %>

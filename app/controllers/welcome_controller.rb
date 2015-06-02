@@ -53,6 +53,17 @@ get '/month' do
   smallest_number = array.each_with_index.min[0]
   p array_of_indexes = array.each_index.select{|i| array[i] == smallest_number}
 
+  #This below could be done with a hash?
+  @array_of_closest_matching_temps = []
+
+  array_of_indexes.each do |index|
+    @array_of_closest_matching_temps << sf_hash.values[index]
+  end
+
+  puts "@array_of_closest_matching_temps"
+  p @array_of_closest_matching_temps
+
+
   @array_of_closest_matching_months = []
 
   array_of_indexes.each do |index|
