@@ -221,6 +221,20 @@ var helpers = (function(){
         .text(function(d) { return d; });
 
       return legend
+    },
+    title: function(vis,width,height,margin,text){
+      var title = vis.append('g')
+        .attr('class','title')
+        .attr('width',width)
+        .attr('height',height)
+        .attr('transform','translate('+(width/2)+','+(margin.top - 10)+')')
+
+      title.append('text')
+        .text(text)
+        .attr('text-anchor','middle')
+        .attr('font-size',30)
+
+      return title
     }
   }
 })();
@@ -248,17 +262,11 @@ var lineCharts = (function(){
       legendRectSize = 18,
       legendSpacing = 4,
       // Add the legend
-      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis);
+      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis),
       // Initialize the title group
-      var title = vis.append('g')
-        .attr('class','title')
-        .attr('transform','translate('+(width/2 - 2*margin.left)+','+(margin.top - 10)+')')
-
-      title.append('text')
-        .text(args.title+parse.city(raw.city.name))
-        .attr('font-size',30  )
+      title = helpers.title(vis,width,height,margin,(args.title+parse.city(raw.city.name)));
       // Append the Axises and fix the numbers there.
-      helpers.appendAxes(vis,xRange,yRange,height,margin,raw)
+      helpers.appendAxes(vis,xRange,yRange,height,margin,raw);
       // Create all the lines
       vis.selectAll('.line')
         .data(data)
@@ -309,15 +317,9 @@ var lineCharts = (function(){
       legendRectSize = 18,
       legendSpacing = 4,
       // Add the legend
-      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis);
+      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis),
       // Initialize the title group
-      var title = vis.append('g')
-        .attr('class','title')
-        .attr('transform','translate('+(width/4 - margin.left)+','+(margin.top - 10)+')')
-
-      title.append('text')
-        .text(parse.param(param)+" comparison for "+parse.city(from.city.name)+" and "+parse.city(to.city.name))
-        .attr('font-size',30)
+      title = helpers.title(vis,width,height,margin,(parse.param(param)+" comparison for "+parse.city(from.city.name)+" and "+parse.city(to.city.name)));
       // Append the Axises.
       helpers.appendAxes(vis,xRange,yRange,height,margin,from);
       // Create all the lines
@@ -370,15 +372,9 @@ var lineCharts = (function(){
       legendRectSize = 18,
       legendSpacing = 4,
       // Add the legend
-      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis);
-      // Initialize the title group
-      var title = vis.append('g')
-        .attr('class','title')
-        .attr('transform','translate('+(width/2 - 4*margin.left)+','+(margin.top - 10)+')')
-
-      title.append('text')
-        .text(args.title+parse.city(raw.city.name))
-        .attr('font-size',30)
+      legend = helpers.addLegend(width,margin,legendSpacing,legendRectSize,args,vis),
+      // Initialize the Title group
+      title = helpers.title(vis,width,height,margin,(args.title+parse.city(raw.city.name)));
       // Create a blank line
       line = d3.svg.line()
         .x(function(d,i){ return xRange(i+1);})

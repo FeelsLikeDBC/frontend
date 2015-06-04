@@ -53,6 +53,6 @@ $(function(){
     // lineCharts.compareCities(from,to,'#target','avg_temp')
 
     // Shows the time of Sunrise and Sunset for a single city
-    lineCharts.dayNight(from, '#target', dayNight)
+    // lineCharts.dayNight(from, '#target', dayNight)
   });
 })
