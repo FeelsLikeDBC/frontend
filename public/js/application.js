@@ -120,6 +120,21 @@ $(function(){
 
           console.log("string_of_closest_matching_months:", string_of_closest_matching_months)
 
+
+          var city_temps_html = ""
+
+          for(var i = 0; i < array_of_closest_matching_months.length; i++){
+            city_temps_html += "<p>" + from_name + ", " + array_of_closest_matching_months[i] + ": " + array_of_closest_matching_temps[i] + "°</p>"
+          };
+
+          console.log("city_temps_html:", city_temps_html)
+
+
+
+
+
+
+
           var biggest_from_city_number = Math.max.apply(Math, from_city_avgs)
           var smallest_from_city_number = Math.min.apply(Math, from_city_avgs)
 
@@ -142,7 +157,8 @@ $(function(){
           console.log("message:", message)
 
           $(".comparisons")
-          .prepend("<br><p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p><p>" + from_name + ", " + first_month + ": " + first_temp + "°</p><br>")
+          .prepend("<br><p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p>" + city_temps_html + "<br>")
+
 
 
         };
