@@ -8,9 +8,15 @@
 }
 
 .marks_submit {
-  margin-left: 36em
+  margin-left: 36em;
+  border: 2px outset buttonface;
+  -webkit-appearance: push-button !important;
 }
 
 .marks_month_form {
   margin-left: 34em
+}
+
+#temp_form {
+  margin: 0;
 }

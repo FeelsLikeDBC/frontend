@@ -9,7 +9,7 @@ $(function(){
   var from_name = city_object("from").city.name.replace("_"," ");
   var to_name = city_object("to").city.name.replace("_"," ");
 
-  $(".instructions").append("<p>Select a month to compare the weather of " + to_name + " to " + from_name + "</p>")
+  $(".instructions").prepend("<p style='display: inline-block'>Select a month to compare the weather of " + to_name + " to " + from_name + "</p>")
 
 
 
