@@ -1,6 +1,6 @@
 .marks_container {
   margin: 60px auto;
-  width: 800px;
+  width: 650px;
   padding: 0px 20px 20px 20px;
   border: 8px solid;
   background-color: white;
@@ -8,9 +8,9 @@
 }
 
 .marks_submit {
-  margin-left: 43em
+  margin-left: 36em
 }
 
 .marks_month_form {
-  margin-left: 40em
+  margin-left: 34em
 }

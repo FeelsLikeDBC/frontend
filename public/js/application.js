@@ -1,5 +1,18 @@
 $(function(){
   cities.setEventListeners();
+
+  var city_object = function(fromto){
+            var retrievedObject = localStorage.getItem(fromto);
+            return JSON.parse(retrievedObject);
+        };
+
+  var from_name = city_object("from").city.name.replace("_"," ");
+  var to_name = city_object("to").city.name.replace("_"," ");
+
+  $(".instructions").append("<p>Select a month to compare the weather of " + to_name + " to " + from_name + "</p>")
+
+
+
   // var from = cities.retrieve('from');
   // var to = cities.retrieve('to');
   // attributes = [thing,thing,thing,thing,thing]
@@ -129,21 +142,12 @@ $(function(){
           console.log("message:", message)
 
           $(".comparisons")
-          .prepend("<p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p><p>" + from_name + ", " + first_month + ": " + first_temp + "°</p><br><br>")
+          .prepend("<br><p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p><p>" + from_name + ", " + first_month + ": " + first_temp + "°</p><br>")
 
 
         };
 
         comparison(from_name, from_city_avgs, to_name, to_city_avgs)
-
-
-
-        // var marks_response = { description: "What a lovely day!!!"}
-
-        // var source   = ({{> MyPartial}})
-        // var template = Handlebars.compile(source);
-
-
 
 
     });
