@@ -110,7 +110,6 @@ DEPENDENCIES
   faker
   hirb
   pg
-  pry
   rack-test
   rake
   rspec (~> 3.0)
