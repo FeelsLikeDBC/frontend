@@ -1,3 +1,10 @@
+GIT
+  remote: http://github.com/benkitzelman/sinatra-handlebars
+  revision: d95848977e79beeaff332ee8dabd33a69a700118
+  specs:
+    sinatra-handlebars (0.0.4)
+      sinatra
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -112,4 +119,5 @@ DEPENDENCIES
   shoulda-matchers
   sinatra
   sinatra-contrib
+  sinatra-handlebars!
   unirest

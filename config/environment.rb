@@ -18,6 +18,16 @@ require 'pry'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
+require 'sinatra/handlebars'
+
+class App < Sinatra::Base
+  register Sinatra::Handlebars
+  handlebars {
+    templates '/js/templates.js', ['app/templates/*']
+  }
+end
+
+
 require 'erb'
 
 # Some helper constants for path-centric logic

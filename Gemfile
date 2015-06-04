@@ -15,6 +15,7 @@ gem 'rake'
 gem 'unirest'
 gem 'shotgun'
 gem 'hirb'
+gem 'sinatra-handlebars',   git: 'http://github.com/benkitzelman/sinatra-handlebars'
 
 group :test do
   gem 'shoulda-matchers'

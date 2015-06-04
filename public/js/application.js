@@ -1,10 +1,13 @@
 $(function(){
   cities.setEventListeners();
-
-  $(".month_form").on('submit', function(event){
+  // var from = cities.retrieve('from');
+  // var to = cities.retrieve('to');
+  // attributes = [thing,thing,thing,thing,thing]
+  // marksThing.go(target,from,to,attribute)
+  $(".marks_month_form").on('submit', function(event){
     event.preventDefault();
 
-    var selected_month = $(".month_form option:selected").val();
+    var selected_month = $(".marks_month_form option:selected").val();
 
     var city_object = function(fromto){
             var retrievedObject = localStorage.getItem(fromto);
@@ -110,6 +113,9 @@ $(function(){
           console.log("biggest_from_city_number:", biggest_from_city_number)
           console.log("smallest_from_city_number:", smallest_from_city_number)
 
+          var first_month = array_of_closest_matching_months[0]
+          var first_temp = array_of_closest_matching_temps[0]
+
           if(to_city_temp > biggest_from_city_number){
             var difference = to_city_temp - biggest_from_city_number
             var message = selected_month + " in " + to_city_name + " is " + difference + "° hotter than the hottest month in " + from_city_name + "!!!"
@@ -122,36 +128,22 @@ $(function(){
 
           console.log("message:", message)
 
-
-          // if @city_1_month_temp > biggest_city2_number
-          //   difference = (@city_1_month_temp - biggest_city2_number).to_s
-          //   @message = "#{@month} in #{first_city_name} is #{difference}° hotter than the hottest month in #{second_city_name}!!!"
-          // elsif @city_1_month_temp < smallest_city2_number
-          //   difference = (smallest_city2_number - @city_1_month_temp).to_s
-          //   @message = "#{@month} in #{first_city_name} is #{difference}° colder than the coldest month in #{second_city_name}!!!"
-          // else
-          //   @message = "#{@month} in #{first_city_name} is like #{@string_of_closest_match_months} in #{second_city_name}."
-          // end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          $(".comparisons")
+          .prepend("<p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p><p>" + from_name + ", " + first_month + ": " + first_temp + "°</p><br><br>")
 
 
         };
 
         comparison(from_name, from_city_avgs, to_name, to_city_avgs)
+
+
+
+        // var marks_response = { description: "What a lovely day!!!"}
+
+        // var source   = ({{> MyPartial}})
+        // var template = Handlebars.compile(source);
+
+
 
 
     });
