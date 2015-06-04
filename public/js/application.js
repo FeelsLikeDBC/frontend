@@ -116,7 +116,15 @@ $(function(){
 
           console.log("array_of_closest_matching_months:", array_of_closest_matching_months)
 
-          var string_of_closest_matching_months = array_of_closest_matching_months.join(', ')
+          var english_join = function(array){
+            if(array.length <= 1){
+              return array.join()
+            } else {
+              return array.slice(0, array.length - 1).join(', ') + " and " + array.slice(-1);
+            }
+          };
+
+          var string_of_closest_matching_months = english_join(array_of_closest_matching_months)
 
           console.log("string_of_closest_matching_months:", string_of_closest_matching_months)
 
@@ -158,7 +166,6 @@ $(function(){
 
           $(".comparisons")
           .prepend("<br><p>" + message + "</p><u><p>Average Temperatures:</p></u><p>" + to_city_name + ", " + selected_month + ": " + to_city_temp + "°</p>" + city_temps_html + "<br>")
-
 
 
         };
