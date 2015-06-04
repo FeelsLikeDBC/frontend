@@ -37,7 +37,7 @@ $(function(){
         var month_array = city_object.data;
 
         for(var i = 0; i < month_array.length; i++){
-          month_prop_totals[month_array[i]["month"] - 1] += month_array[i]["high_temp"];
+          month_prop_totals[month_array[i]["month"] - 1] += month_array[i]["avg_apparent_day_temp"];
           month_days_count[month_array[i]["month"] - 1] += 1;
         };
 
@@ -154,12 +154,12 @@ $(function(){
 
           if(to_city_temp > biggest_from_city_number){
             var difference = to_city_temp - biggest_from_city_number
-            var message = selected_month + " in " + to_city_name + " is " + difference + "° hotter than the hottest month in " + from_city_name + "!!!"
+            var message = selected_month + " in " + to_city_name + " feels " + difference + "° hotter than the hottest month in " + from_city_name + "!!!"
           } else if (to_city_temp < smallest_from_city_number){
             var difference = smallest_from_city_number - to_city_temp
-            var message = selected_month + " in " + to_city_name + " is " + difference + "° colder than the coldest month in " + from_city_name + "!!!"
+            var message = selected_month + " in " + to_city_name + " feels " + difference + "° colder than the coldest month in " + from_city_name + "!!!"
           } else {
-            var message = selected_month + " in " + to_city_name + " is like " + string_of_closest_matching_months + " in " + from_city_name + "."
+            var message = selected_month + " in " + to_city_name + " feels like " + string_of_closest_matching_months + " in " + from_city_name + "."
           }
 
           console.log("message:", message)
